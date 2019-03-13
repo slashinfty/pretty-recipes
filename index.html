@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="recipeApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Pretty Recipe Generator</title>
+        <link href="index.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+        <script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
+        <script src="index.js"></script>
+    </head>
+    <body ng-controller="RecipeCtrl" class="content">
+        <h1>Pretty Recipe Generator</h1>
+        <p>Generates pretty PDF copies of recipes written in LaTeX. Source code available.</p>
+        <p><label>Recipe Title: </label><input type="text" id="title"/></p>
+        <p><label>Recipe Author: </label><input type="text" id="author"/></p>
+        <p><label>Brief Description: </label><input type="text" id="descript"/></p>
+        <p><i>Times suggested in the format 0h 00m</i></p>
+        <p><label>Prep Time: </label><input type="text" id="prep" size="8"/></p>
+        <p><label>Cook Time: </label><input type="text" id="cook" size="8"/></p>
+        <p><i>Input ingredients and directions one at a time and press add after each one.</p>
+        <p>If you want to input a temperature, do <b>*F</b> or <b>*C</b>.</p></i>
+        <p><form ng-submit="addIngredient()"><label>Ingredient: </label><input type="text" ng-model="enteredIngredient"><input type="submit" value="Add to List"></form></p>
+        <ul>
+            <li ng-repeat="ingredient in ingredients">{{ingredient}}</li>
+        </ul>
+        <p><form ng-submit="addDirection()"><label>Direction: </label><input type="text" ng-model="enteredDirection"><input type="submit" value="Add to List"></form></p>
+        <ol>
+            <li ng-repeat="direction in directions">{{direction}}</li>
+        </ol>
+        <button onclick="submit()">Generate PDF</button>
+    </body>
+</html>
