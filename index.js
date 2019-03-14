@@ -11,14 +11,27 @@ recipeApp.controller('RecipeCtrl', function ($scope){
         $scope.directions.push($scope.enteredDirection);
         directionList.push($scope.enteredDirection);
     };
+    
+    $scope.change = function() {
+        title = $scope.title;
+        descript = $scope.descript;
+        author = $scope.author;
+        prepTime = $scope.prep;
+        cookTime = $scope.cook;
+    };
 });
 
 var ingredientList = [];
 var directionList = [];
+var title;
+var descript;
+var author;
+var prepTime;
+var cookTime;
 
 async function submit() {
-    let prep = document.getElementById("prep").value !== "" ? "Prep: " + latexReplace(document.getElementById("prep").value) : "";
-    let cook = document.getElementById("cook").value !== "" ? "Cook: " + latexReplace(document.getElementById("cook").value) : "";
+    let prep = prepTime !== "" ? "Prep: " + latexReplace(prepTime) : "";
+    let cook = cookTime !== "" ? "Cook: " + latexReplace(cookTime) : "";
     let ingredientString = "";
     ingredientList.forEach(ingredient => {
         ingredientString = ingredientString + "\item " + latexReplace(ingredient);
@@ -27,9 +40,8 @@ async function submit() {
     directionList.forEach(direction => {
         directionString = directionString + "\item " + latexReplace(direction);
     });
-    let dlName = "&dowload=" + document.getElementById("title").value.replace(/\s/g, "-") + ".pdf";
-    let document = one + latexReplace(document.getElementById("title").value) + two + latexReplace(document.getElementById("descript").value) + three + prep + four + latexReplace(document.getElementById("author").value) + five + cook + six + ingredientString + seven + directionString + eight + dlName;
+    let document = one + latexReplace(title) + two + latexReplace(descript) + three + prep + four + latexReplace(author) + five + cook + six + ingredientString + seven + directionString + eight;
     let submission = encodeURIComponent(document.trim());
     let response = await fetch("latexonline.cc/compile?text=" + submission);
-    await saveAs(new Blob([reponse], {type: 'application/pdf'}), document.getElementById("title").value.replace(/\s/g, "-") + ".pdf");
+    await saveAs(new Blob([reponse], {type: 'application/pdf'}), title.trim().replace(/\s/g, "-") + ".pdf");
 }
