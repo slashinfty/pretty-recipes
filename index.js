@@ -43,5 +43,5 @@ async function submit() {
     let document = one + latexReplace(title) + two + latexReplace(descript) + three + prep + four + latexReplace(author) + five + cook + six + ingredientString + seven + directionString + eight;
     let submission = encodeURIComponent(document.trim());
     let response = await fetch("latexonline.cc/compile?text=" + submission);
-    await saveAs(new Blob([reponse], {type: 'application/pdf'}), title.trim().replace(/\s/g, "-") + ".pdf");
+    await saveAs(new Blob([response], {type: 'application/pdf'}), title.trim().replace(/\s/g, "-") + ".pdf");
 }
