@@ -34,11 +34,11 @@ function submit() {
     let cook = cookTime !== "" ? "Cook: " + latexReplace(cookTime) : "";
     let ingredientString = "";
     ingredientList.forEach(ingredient => {
-        ingredientString = ingredientString + "\item " + latexReplace(ingredient);
+        ingredientString = ingredientString + "\\item " + latexReplace(ingredient);
     });
     let directionString = "";
     directionList.forEach(direction => {
-        directionString = directionString + "\item " + latexReplace(direction);
+        directionString = directionString + "\\item " + latexReplace(direction);
     });
     let document = one + latexReplace(title) + two + latexReplace(descript) + three + prep + four + latexReplace(author) + five + cook + six + ingredientString + seven + directionString + eight;
     saveAs(new Blob([document], {type: 'text/plain;charset=utf-8'}), title.trim().replace(/\s/g, "-") + ".tex");
