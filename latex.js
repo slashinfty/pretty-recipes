@@ -24,7 +24,7 @@ function latexReplace (str) {
         return latexSymbols[symbol];
     }).replace(/\d+\/\d+/g, fraction => {
         let parts = fraction.split('/');
-        return "\\frac{" + parts[0] + "}{" + parts[1] + "}";
+        return "$\\frac{" + parts[0] + "}{" + parts[1] + "}$";
     }).replace(/\*\s?(c|f)/gi, degree => {
         return "\\textdegree " + degree.substr(-1).toUpperCase();
     });
