@@ -29,7 +29,7 @@ var author;
 var prepTime;
 var cookTime;
 
-async function submit() {
+function submit() {
     let prep = prepTime !== "" ? "Prep: " + latexReplace(prepTime) : "";
     let cook = cookTime !== "" ? "Cook: " + latexReplace(cookTime) : "";
     let ingredientString = "";
@@ -41,7 +41,5 @@ async function submit() {
         directionString = directionString + "\item " + latexReplace(direction);
     });
     let document = one + latexReplace(title) + two + latexReplace(descript) + three + prep + four + latexReplace(author) + five + cook + six + ingredientString + seven + directionString + eight;
-    let submission = encodeURIComponent(document.trim());
-    let response = await fetch("https://cors-anywhere.herokuapp.com/" + "https://latex-online-recipe-latex.7e14.starter-us-west-2.openshiftapps.com/compile?text=" + submission);
-    await saveAs(new Blob([response], {type: 'application/pdf'}), title.trim().replace(/\s/g, "-") + ".pdf");
+    await saveAs(new Blob([document], {type: 'text/plain;charset=utf-8'}), title.trim().replace(/\s/g, "-") + ".tex");
 }
