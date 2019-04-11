@@ -4,12 +4,20 @@ recipeApp.controller('RecipeCtrl', function ($scope){
     $scope.addIngredient = function() {
         $scope.ingredients.push($scope.enteredIngredient);
         ingredientList.push($scope.enteredIngredient);
-    };                                       
+    };
+    $scope.removeIngredient = function(name) {
+        $scope.ingredients.splice($scope.ingredients.indexOf(name), 1);
+        ingredientList.splice(ingredientList.indexOf(name), 1);
+    };
     
     $scope.directions = [];
     $scope.addDirection = function() {
         $scope.directions.push($scope.enteredDirection);
         directionList.push($scope.enteredDirection);
+    };
+    $scope.removeDirection = function(name) {
+        $scope.directions.splice($scope.directions.indexOf(name), 1);
+        directionList.splice(directionList.indexOf(name), 1);
     };
     
     $scope.change = function() {

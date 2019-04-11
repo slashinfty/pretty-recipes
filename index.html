@@ -23,11 +23,11 @@
         <p>If you want to input a temperature, do <b>*F</b> or <b>*C</b>.</p></i>
         <p><form ng-submit="addIngredient()"><label>Ingredient: </label><input ng-model="enteredIngredient"><input type="submit" value="Add to List"></form></p>
         <ul>
-            <li ng-repeat="ingredient in ingredients">{{ingredient}}</li>
+            <li ng-repeat="ingredient in ingredients">{{ingredient}} <a href="" ng-click="removeIngredient(ingredient)">remove</a></li>
         </ul>
         <p><form ng-submit="addDirection()"><label>Direction: </label><input ng-model="enteredDirection"><input type="submit" value="Add to List"></form></p>
         <ol>
-            <li ng-repeat="direction in directions">{{direction}}</li>
+            <li ng-repeat="direction in directions">{{direction}} <a href="" ng-click="removeDirection(direction)">remove</a></li>
         </ol>
         <button onclick="submit()">Generate TEX File</button>
     </body>
