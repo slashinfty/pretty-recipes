@@ -8,7 +8,7 @@ var seven = `\\end{itemize}\\vspace{7mm}\\begin{huge}Directions\\end{huge}\\\\\\
 var eight = `\\end{enumerate}\\end{document}`;
 
 function latexReplace (str) {
-    if (str === "") return;
+    if (str === undefined || "") return;
     const latexSymbols = {
         "$": "\\$",
         "%": "\\%",

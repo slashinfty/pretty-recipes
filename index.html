@@ -30,6 +30,7 @@
             <li ng-repeat="direction in directions">{{direction}} <a href="" ng-click="removeDirection(direction)">remove</a></li>
         </ol>
         <button onclick="submit()">Generate TEX File</button>
-        <p>To compile into PDF, either upload on <a href="https://latexbase.com/" target="_blank">LaTeX Base</a>, or locally with your own LaTeX distribution.</p>
+        <p>To compile into PDF, either upload on <a href="https://latexbase.com/" target="_blank">LaTeX Base</a>, or locally with your own LaTeX <a href="https://miktex.org/" target="_blank">distribution</a>.</p>
+        <p>This Windows <a href="https://gist.github.com/slashinfty/5b6149945d40d35137ce06a340b2c8b0" target="_blank">batch file</a> can be used to convert multiple TEX files to PDF, if a LaTeX distribution is installed.</p>
     </body>
 </html>
