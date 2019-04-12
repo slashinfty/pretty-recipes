@@ -25,6 +25,8 @@ function latexReplace (str) {
     }).replace(/\d+\/\d+/g, fraction => {
         let parts = fraction.split('/');
         return "$\\frac{" + parts[0] + "}{" + parts[1] + "}$";
+    }).replace(/\d\s\$/g, mixed => {
+        return mixed.replace(/\s/g, '');
     }).replace(/\*\s?(c|f)/gi, degree => {
         return "\\textdegree " + degree.substr(-1).toUpperCase();
     });
