@@ -1,2 +1,2 @@
 # pretty-recipes
-Generates PDFs of recipes written in LaTeX
+Generates TEX files of recipes, which can be compiled into PDFs.
