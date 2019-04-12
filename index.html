@@ -12,7 +12,7 @@
     </head>
     <body ng-controller="RecipeCtrl" class="content">
         <h1>Pretty Recipe Generator</h1>
-        <p>Generates pretty PDF copies of recipes written in LaTeX. Source code available.</p>
+        <p>Generates TEX files for recipes, which can be compiled into PDFs. Source code available.</p>
         <p><label>Recipe Title: </label><input ng-model="title" ng-change="change()"/></p>
         <p><label>Recipe Author: </label><input ng-model="author" ng-change="change()"/></p>
         <p><label>Brief Description: </label><input ng-model="descript" ng-change="change()"/></p>
@@ -30,5 +30,6 @@
             <li ng-repeat="direction in directions">{{direction}} <a href="" ng-click="removeDirection(direction)">remove</a></li>
         </ol>
         <button onclick="submit()">Generate TEX File</button>
+        <p>To compile into PDF, either upload on <a href="https://latexbase.com/" target="_blank">LaTeX Base</a>, or locally with your own LaTeX distribution.</p>
     </body>
 </html>
