@@ -4,6 +4,7 @@ recipeApp.controller('RecipeCtrl', function ($scope){
     $scope.addIngredient = function() {
         $scope.ingredients.push($scope.enteredIngredient);
         ingredientList.push($scope.enteredIngredient);
+        $scope.enteredIngredient = '';
     };
     $scope.removeIngredient = function(name) {
         $scope.ingredients.splice($scope.ingredients.indexOf(name), 1);
@@ -14,6 +15,7 @@ recipeApp.controller('RecipeCtrl', function ($scope){
     $scope.addDirection = function() {
         $scope.directions.push($scope.enteredDirection);
         directionList.push($scope.enteredDirection);
+        $scope.enteredDirection = '';
     };
     $scope.removeDirection = function(name) {
         $scope.directions.splice($scope.directions.indexOf(name), 1);
@@ -38,8 +40,8 @@ var prepTime;
 var cookTime;
 
 function submit() {
-    let prep = prepTime !== "" ? "Prep: " + latexReplace(prepTime) : "";
-    let cook = cookTime !== "" ? "Cook: " + latexReplace(cookTime) : "";
+    let prep = prepTime !== ("" || undefined) ? "Prep: " + latexReplace(prepTime) : "";
+    let cook = cookTime !== ("" || undefined) ? "Cook: " + latexReplace(cookTime) : "";
     let ingredientString = "";
     ingredientList.forEach(ingredient => {
         ingredientString = ingredientString + "\\item " + latexReplace(ingredient);
