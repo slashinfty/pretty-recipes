@@ -26,6 +26,7 @@ recipeApp.controller('RecipeCtrl', function ($scope){
         title = $scope.title;
         descript = $scope.descript;
         author = $scope.author;
+        picture = $scope.picture;
         prepTime = $scope.prep;
         cookTime = $scope.cook;
     };
@@ -36,10 +37,12 @@ var directionList = [];
 var title;
 var descript;
 var author;
+var picture;
 var prepTime;
 var cookTime;
 
 function submit() {
+    let filename = title.trim().replace(/\s/g, "-");
     let prep = prepTime !== ("" || undefined) ? "Prep: " + latexReplace(prepTime) : "";
     let cook = cookTime !== ("" || undefined) ? "Cook: " + latexReplace(cookTime) : "";
     let ingredientString = "";
@@ -50,6 +53,17 @@ function submit() {
     directionList.forEach(direction => {
         directionString = directionString + "\\item " + latexReplace(direction);
     });
-    let document = one + latexReplace(title) + two + latexReplace(descript) + three + prep + four + latexReplace(author) + five + cook + six + ingredientString + seven + directionString + eight;
-    saveAs(new Blob([document], {type: 'text/plain;charset=utf-8'}), title.trim().replace(/\s/g, "-") + ".tex");
+    let pictureInput = "";
+    let document;
+    if (picture) {
+        pictureInput = `\\begin{wrapfigure}{r}{0.15\\textwidth}\\includegraphics[width=\\linewidth]{` + filename + `}\\end{wrapfigure}`;
+        ingredientString = `\\setlength{\\itemindent}{2.5em}` + ingredientString;
+        directionString = `\\setlength{\\itemindent}{2.5em}` + directionString;
+        prep = prep === "" ? "" : `\\\\` + prep;
+        cook = cook === "" ? "" : `\\\\` + cook;
+        document = one + pictureInput + oneHalf + latexReplace(title) + two + latexReplace(descript) + four + latexReplace(author) + prep + cook + six + ingredientString + seven + directionString + eight;
+    } else {
+        document = one + oneHalf + latexReplace(title) + two + latexReplace(descript) + three + prep + four + latexReplace(author) + five + cook + six + ingredientString + seven + directionString + eight;
+    }
+    saveAs(new Blob([document], {type: 'text/plain;charset=utf-8'}), filename + ".tex");
 }

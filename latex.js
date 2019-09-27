@@ -1,4 +1,5 @@
-var one = `\\documentclass[12pt]{letter}\\usepackage[letterpaper,margin=0.65in]{geometry}\\usepackage{textcomp}\\pagenumbering{gobble}\\begin{document}\\begin{huge}`;//then title
+var one = `\\documentclass[12pt]{letter}\\usepackage[letterpaper,margin=0.65in]{geometry}\\usepackage{textcomp}\\usepackage{graphicx}\\usepackage{wrapfig}\\pagenumbering{gobble}\\begin{document}`;//then possible picture
+var oneHalf = `\\begin{huge}`;//then title
 var two = `\\end{huge}\\newline\\vspace{-2.5mm}\\newline\\renewcommand{\\arraystretch}{1.1}\\begin{tabular*}{\\textwidth}{@{\\extracolsep{\\fill}}lr}`;//then description
 var three = `&`;//then prep time
 var four = `\\\\`;//then author

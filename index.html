@@ -16,6 +16,8 @@
         <p>Source code available <a href="https://github.com/slashinfty/pretty-recipes" target="_blank">here</a>.</p>
         <p><label>Recipe Title: </label><input ng-model="title" ng-change="change()"/></p>
         <p><label>Recipe Author: </label><input ng-model="author" ng-change="change()"/></p>
+        <p><i>If including a picture, the file must be saved in the same folder as the .tex file with the same name as the .tex file. For best results, the picture should be 1:1 in dimensions.</i></p>
+        <p><label>Include Picture? </label><input type="checkbox" ng-model="picture" ng-change="change()"/></p>
         <p><label>Brief Description: </label><input ng-model="descript" ng-change="change()"/></p>
         <p><i>Times suggested in the format 0h 00m</i></p>
         <p><label>Prep Time: </label><input ng-model="prep" ng-change="change()" size="8"/></p>
