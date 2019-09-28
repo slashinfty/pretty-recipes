@@ -42,7 +42,7 @@ var prepTime;
 var cookTime;
 
 function submit() {
-    let filename = title.trim().replace(/\s/g, "-");
+    let filename = title.trim().replace(/\s/g, "-").toLowerCase();
     let prep = prepTime !== ("" || undefined) ? "Prep: " + latexReplace(prepTime) : "";
     let cook = cookTime !== ("" || undefined) ? "Cook: " + latexReplace(cookTime) : "";
     let ingredientString = "";
