@@ -56,9 +56,7 @@ function submit() {
     let pictureInput = "";
     let document;
     if (picture) {
-        pictureInput = `\\begin{wrapfigure}{r}{0.15\\textwidth}\\includegraphics[width=\\linewidth]{` + filename + `}\\end{wrapfigure}`;
-        ingredientString = `\\setlength{\\itemindent}{2.5em}` + ingredientString;
-        directionString = `\\setlength{\\itemindent}{2.5em}` + directionString;
+        pictureInput = `\\begin{floatingfigure}{0.15\\textwidth}\\raisebox{0pt}[0pt][0pt]{\\raisebox{-2.5cm}{\\includegraphics[width=0.15\\textwidth]{` + filename + `}}}\\end{floatingfigure}`;
         prep = prep === "" ? "" : `\\\\` + prep;
         cook = cook === "" ? "" : `\\\\` + cook;
         document = one + pictureInput + oneHalf + latexReplace(title) + two + latexReplace(descript) + four + latexReplace(author) + prep + cook + six + ingredientString + seven + directionString + eight;
