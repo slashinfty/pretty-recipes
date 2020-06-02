@@ -23,6 +23,10 @@ function latexReplace (str) {
     }
     return str.replace(/[$%_{}&#<>]/g, symbol => {
         return latexSymbols[symbol];
+    }).replace(/"(?=\S)/g, startQuote => {
+        return startQuote.replace(/"/g, "``");
+    }).replace(/(?<=\S)"/g, endQuote => {
+        return endQuote.replace(/"/g, "''");
     }).replace(/\d+\/\d+/g, fraction => {
         let parts = fraction.split('/');
         return "$\\frac{" + parts[0] + "}{" + parts[1] + "}$";
